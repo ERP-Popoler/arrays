@@ -3,9 +3,10 @@
     private static void Main(string[] args)
     {
         Console.WriteLine("Hello, World!");
-        //nada
-        //nada
-        //nada
+        //priscila (actulizacion 22/05/2024 23:13)
+        Console.Write("hola: ");
+
+        //jua n
     }
 
 }
