@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\darie\\.nuget\\packages\\": {}
+    "/Users/e.r/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\proyecto02\\arrays\\arrays\\arrays.csproj",
+      "projectUniqueName": "/Users/e.r/proyecto/arrays/arrays/arrays.csproj",
       "projectName": "arrays",
-      "projectPath": "E:\\proyecto02\\arrays\\arrays\\arrays.csproj",
-      "packagesPath": "C:\\Users\\darie\\.nuget\\packages\\",
-      "outputPath": "E:\\proyecto02\\arrays\\arrays\\obj\\",
+      "projectPath": "/Users/e.r/proyecto/arrays/arrays/arrays.csproj",
+      "packagesPath": "/Users/e.r/.nuget/packages/",
+      "outputPath": "/Users/e.r/proyecto/arrays/arrays/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\darie\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/e.r/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -64,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
