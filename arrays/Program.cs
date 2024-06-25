@@ -9,8 +9,10 @@
         //jua n
     }
     //dariell stuvo aqui
-
+    
+    Console.Write("hola");
     //hola
 // holass
 //hola dariell
+Console.WriteLine(jola"); 
 }
