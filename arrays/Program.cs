@@ -18,7 +18,7 @@ class JuegoDeMemoria
             JugarJuegoDeMemoria(nombreUsuario);
 
             Console.WriteLine("¿Quieres jugar de nuevo? (S/N): ");
-            string respuesta = Console.ReadLine().ToUpper();
+            string respuesta = Console.ReadLine()!.ToUpper();
             if (respuesta == "S")
             {
                 jugarDeNuevo = true;
@@ -54,6 +54,13 @@ class JuegoDeMemoria
  
           Console.WriteLine("                                 ******************************************");
 
+                // Animación para mostrar el arte ASCII letra por letra
+        foreach (char c in teambigote )
+        {
+            Console.Write(c);
+           //Thread.Sleep(500); // Pausa para efecto visual
+        }
+
         string bienvenida = @"
          /*  _____                                                                                                                                _____  */
          /* ( ___ )                                                                                                                              ( ___ ) */
@@ -85,10 +92,10 @@ class JuegoDeMemoria
          /* (_____)                                                                                                                              (_____) */";
         
         // Animación para mostrar el arte ASCII letra por letra
-        foreach (char c in asciiArt)
+        foreach (char c in bienvenida )
         {
             Console.Write(c);
-           // Thread.Sleep(1000); // Pausa para efecto visual
+           Thread.Sleep(500); // Pausa para efecto visual
         }
 
         Console.WriteLine("\nEl objetivo del juego es encontrar todas las parejas de cartas.");
@@ -101,7 +108,7 @@ class JuegoDeMemoria
     static string SolicitarNombreUsuario()
     {
         Console.Write("Por favor, introduce tu nombre: ");
-        return Console.ReadLine();
+        return Console.ReadLine()!;
     }
 
     static void AplicarDegradado()
