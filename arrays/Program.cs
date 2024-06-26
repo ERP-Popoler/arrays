@@ -5,8 +5,8 @@ class JuegoDeMemoria
 {
     static void Main(string[] args)
     {
-        Console.OutputEncoding = System.Text.Encoding.UTF8;
-        Console.Title = "Juego de Memoria";
+        
+        ConfigurarConsola();
         MostrarBienvenida();
 
         string nombreUsuario = SolicitarNombreUsuario();
@@ -25,43 +25,47 @@ class JuegoDeMemoria
             }
         } while (jugarDeNuevo);
 
-        Console.WriteLine("¡Gracias por jugar! Presiona cualquier tecla para salir...");
-        Console.ReadKey(true);
+        MostrarDespedida();
     }
 
+    // Priscila - Configuración de la consola y bienvenida
+    // Esta función configura la consola para que soporte UTF-8 y establece el título del juego.
+    static void ConfigurarConsola()
+    {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.Title = "Juego de Memoria";
+    }
+
+    // Esta función muestra la pantalla de bienvenida al jugador.
     static void MostrarBienvenida()
     {
-        Console.WriteLine("                                   ******************************************");
-        string teambigote = @"
-          _____                                                                                                                                           _____                                                                                                                                           _____ 
-         ( ___ )                                                                                                                                         ( ___ )
-          |   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|   | 
-          |   |                                                                                                                                           |   | 
-          |   |                                                                                                                                           |   | 
-          |   |    ,--.--------.     ,----.    ,---.             ___                       .=-.-.     _,---.      _,.---._    ,--.--------.     ,----.    |   | 
-          |   |   /==/,  -   , -\ ,-.--` , \ .--.'  \     .-._ .'=.'\           _..---.   /==/_ / _.='.'-,  \   ,-.' , -  `. /==/,  -   , -\ ,-.--` , \   |   | 
-          |   |   \==\.-.  - ,-./|==|-  _.-` \==\-/\ \   /==/ \|==|  |        .' .'.-. \ |==|, | /==.'-     /  /==/_,  ,  - \\==\.-.  - ,-./|==|-  _.-`   |   | 
-          |   |    `--`\==\- \   |==|   `.-. /==/-|_\ |  |==|,|  / - |       /==/- '=' / |==|  |/==/ -   .-'  |==|   .=.     |`--`\==\- \   |==|   `.-.   |   | 
-          |   |         \==\_ \ /==/_ ,    / \==\,   - \ |==|  \/  , |       |==|-,   '  |==|- ||==|_   /_,-. |==|_ : ;=:  - |     \==\_ \ /==/_ ,    /   |   | 
-          |   |         |==|- | |==|    .-'  /==/ -   ,| |==|- ,   _ |       |==|  .=. \ |==| ,||==|  , \_.' )|==| , '='     |     |==|- | |==|    .-'    |   | 
-          |   |         |==|, | |==|_  ,`-._/==/-  /\ - \|==| _ /\   |       /==/- '=' ,||==|- |\==\-  ,    (  \==\ -    ,_ /      |==|, | |==|_  ,`-._   |   | 
-          |   |         /==/ -/ /==/ ,     /\==\ _.\=\.-'/==/  / / , /      |==|   -   / /==/. / /==/ _  ,  /   '.='. -   .'       /==/ -/ /==/ ,     /   |   | 
-          |   |         `--`--` `--`-----``  `--`        `--`./  `--`       `-._`.___,'  `--`-`  `--`------'      `--`--''         `--`--` `--`-----``    |   | 
-          |   |                                                                                                                                           |   | 
-          |   |                                                                                                                                           |   | 
-          |___|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|___| 
-         (_____)                                                                                                                                         (_____)"; 
- 
-          Console.WriteLine("                                 ******************************************");
-
-                // Animación para mostrar el arte ASCII letra por letra
-        foreach (char c in teambigote )
+        string teambigote = @"       
+        __| |_________________________________________________________________________________________________________________________________________| |__
+        __   _________________________________________________________________________________________________________________________________________   __
+          | |                                                                                                                                         | |  
+          | |                                                                                                                                         | |  
+          | |                                                                                                                                         | |  
+          | |   ,--.--------.     ,----.    ,---.             ___                       .=-.-.     _,---.      _,.---._    ,--.--------.     ,----.   | |  
+          | |  /==/,  -   , -\ ,-.--` , \ .--.'  \     .-._ .'=.'\           _..---.   /==/_ / _.='.'-,  \   ,-.' , -  `. /==/,  -   , -\ ,-.--` , \  | |  
+          | |  \==\.-.  - ,-./|==|-  _.-` \==\-/\ \   /==/ \|==|  |        .' .'.-. \ |==|, | /==.'-     /  /==/_,  ,  - \\==\.-.  - ,-./|==|-  _.-`  | |  
+          | |   `--`\==\- \   |==|   `.-. /==/-|_\ |  |==|,|  / - |       /==/- '=' / |==|  |/==/ -   .-'  |==|   .=.     |`--`\==\- \   |==|   `.-.  | |  
+          | |        \==\_ \ /==/_ ,    / \==\,   - \ |==|  \/  , |       |==|-,   '  |==|- ||==|_   /_,-. |==|_ : ;=:  - |     \==\_ \ /==/_ ,    /  | |  
+          | |        |==|- | |==|    .-'  /==/ -   ,| |==|- ,   _ |       |==|  .=. \ |==| ,||==|  , \_.' )|==| , '='     |     |==|- | |==|    .-'   | |  
+          | |        |==|, | |==|_  ,`-._/==/-  /\ - \|==| _ /\   |       /==/- '=' ,||==|- |\==\-  ,    (  \==\ -    ,_ /      |==|, | |==|_  ,`-._  | |  
+          | |        /==/ -/ /==/ ,     /\==\ _.\=\.-'/==/  / / , /      |==|   -   / /==/. / /==/ _  ,  /   '.='. -   .'       /==/ -/ /==/ ,     /  | |  
+          | |        `--`--` `--`-----``  `--`        `--`./  `--`       `-._`.___,'  `--`-`  `--`------'      `--`--''         `--`--` `--`-----``   | |  
+          | |                                                                                                                                         | |  
+          | |                                                                                                                                         | |  
+        __| |_________________________________________________________________________________________________________________________________________| |_
+        __   _________________________________________________________________________________________________________________________________________   __
+          | |                                                                                                                                         | |  "; 
+        foreach (char c in teambigote)
         {
             Console.Write(c);
-           //Thread.Sleep(500); // Pausa para efecto visual
+            Thread.Sleep(1); // Pausa para efecto visual
         }
 
-        string bienvenida = @"
+        string bienvenida = @"       
          /*  _____                                                                                                                                _____  */
          /* ( ___ )                                                                                                                              ( ___ ) */
          /*  |   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|   |  */
@@ -90,13 +94,14 @@ class JuegoDeMemoria
          /*  |   |                                                                                                                                |   |  */
          /*  |___|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|___|  */
          /* (_____)                                                                                                                              (_____) */";
-        
+
         // Animación para mostrar el arte ASCII letra por letra
         foreach (char c in bienvenida )
         {
             Console.Write(c);
-           Thread.Sleep(500); // Pausa para efecto visual
+            Thread.Sleep(1); // Pausa para efecto visual
         }
+        Console.ReadKey(true);
 
         Console.WriteLine("\nEl objetivo del juego es encontrar todas las parejas de cartas.");
         Console.WriteLine("Tienes un número limitado de intentos para descubrir las cartas.");
@@ -105,23 +110,16 @@ class JuegoDeMemoria
         Console.WriteLine("\n¡Buena suerte!\n");
     }
 
+    // Pablo - Interacción con el usuario
+    // Esta función solicita el nombre del usuario y lo retorna.
     static string SolicitarNombreUsuario()
     {
         Console.Write("Por favor, introduce tu nombre: ");
         return Console.ReadLine()!;
     }
 
-    static void AplicarDegradado()
-    {
-        Console.Clear();
-        int altura = Console.WindowHeight;
-
-        for (int i = 0; i < altura; i++)
-        {
-            Console.WriteLine(new string(' ', Console.WindowWidth));
-        }
-    }
-
+    // Elians - Implementación del juego de memoria
+    // Esta función contiene la lógica principal del juego de memoria.
     static void JugarJuegoDeMemoria(string nombreUsuario)
     {
         int filas = 4, columnas = 4, intentos = 12; // Cambiado el número de intentos a 12
@@ -174,6 +172,7 @@ class JuegoDeMemoria
         }
     }
 
+    // Esta función inicializa el tablero del juego con parejas de letras.
     static char[,] InicializarTablero(int filas, int columnas)
     {
         char[,] tablero = new char[filas, columnas];
@@ -197,10 +196,10 @@ class JuegoDeMemoria
         return tablero;
     }
 
+    // Esta función muestra el tablero en su estado actual.
     static void MostrarTablero(char[,] tablero, int filas, int columnas)
     {
         Console.Clear();
-        AplicarDegradado();
         Console.SetCursorPosition(0, 0);
         Console.WriteLine("Tablero:");
         Console.Write("  ");
@@ -218,13 +217,14 @@ class JuegoDeMemoria
         }
     }
 
+    // Esta función permite al jugador seleccionar una carta en el tablero.
     static int[] SeleccionarCarta(int filas, int columnas, char[,] tablero)
     {
         int[] posicion = new int[2];
         while (true)
         {
             Console.Write("Selecciona una carta (fila columna): ");
-            string[] coordenadas = Console.ReadLine().Split();
+            string[] coordenadas = Console.ReadLine()!.Split();
             if (coordenadas.Length == 2 && int.TryParse(coordenadas[0], out int fila) && int.TryParse(coordenadas[1], out int columna))
             {
                 if (fila >= 1 && fila <= filas && columna >= 1 && columna <= columnas && tablero[fila - 1, columna - 1] != ' ' && tablero[fila - 1, columna - 1] != 'X')
@@ -247,8 +247,17 @@ class JuegoDeMemoria
         return posicion;
     }
 
+    // Esta función muestra el contenido de la carta seleccionada.
     static void MostrarCarta(char[,] tablero, int x, int y)
     {
         Console.WriteLine($"Carta seleccionada: {x + 1}, {y + 1} - Contenido: {tablero[x, y]}");
+    }
+
+    // Otoniel - Mensajes finales y despedida
+    // Esta función muestra un mensaje de despedida al jugador.
+    static void MostrarDespedida()
+    {
+        Console.WriteLine("¡Gracias por jugar! Presiona cualquier tecla para salir...");
+        Console.ReadKey(true);
     }
 }

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/e.r/Desktop/proyectoARRAYS/arrays/arrays/arrays/arrays.csproj",
+      "projectUniqueName": "/Users/e.r/Desktop/proyectoARRAYS/arrays/arrays/arrays.csproj",
       "projectName": "arrays",
-      "projectPath": "/Users/e.r/Desktop/proyectoARRAYS/arrays/arrays/arrays/arrays.csproj",
+      "projectPath": "/Users/e.r/Desktop/proyectoARRAYS/arrays/arrays/arrays.csproj",
       "packagesPath": "/Users/e.r/.nuget/packages/",
-      "outputPath": "/Users/e.r/Desktop/proyectoARRAYS/arrays/arrays/arrays/obj/",
+      "outputPath": "/Users/e.r/Desktop/proyectoARRAYS/arrays/arrays/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/e.r/.nuget/NuGet/NuGet.Config"
