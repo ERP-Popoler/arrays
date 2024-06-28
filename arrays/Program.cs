@@ -38,6 +38,7 @@ class JuegoDeMemoria
     // Mostrar pantalla de bienvenida con arte ASCII y mensaje.
     static void MostrarBienvenida()
     {
+        Console.Clear();
         ReproducirArchivoAudio("/Users/e.r/Desktop/bienvenida.wav");
         string teamBigote = @"
         __| |_________________________________________________________________________________________________________________________________________| |__
@@ -121,15 +122,17 @@ class JuegoDeMemoria
         Console.ReadKey(true);
 
         // Mensaje de bienvenida
-        Console.BackgroundColor = ConsoleColor.Blue;
         Console.ForegroundColor = ConsoleColor.DarkCyan;
-        Console.WriteLine("\n               ***¡Bienvenido al la prueba del saber, porque te lo tienes que saber***");
-        Console.WriteLine("\n\nPorfi Orison, no rompa el programa poniendo decimales :( nos esforzamos mucho, porfa, no lo dañe \n");
+        Console.WriteLine("\n                                                   ***¡Bienvenido al la prueba del saber, porque te lo tienes que saber***");
+        Console.WriteLine("\n\n                                    Porfi Orison, no rompa el programa poniendo decimales :( nos esforzamos mucho, porfa, no lo dañe \n");
         Console.ResetColor();
 
         Console.ForegroundColor = ConsoleColor.DarkGreen;
-        Console.WriteLine("Presiona Enter para comenzar.");
-        Console.ReadKey();
+        Console.WriteLine("\n\n                                                                  ^^^Presiona Enter para comenzar^^^\n\n");
+        while (Console.ReadKey(true).Key != ConsoleKey.Enter)
+        {
+
+        }
 
         Console.Clear();
         Console.ResetColor();
@@ -139,17 +142,20 @@ class JuegoDeMemoria
     static string SolicitarNombreUsuario()
     {
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.Write("Kiuvo panita, porfa, ingrese su nombre *guiño, guiño, codo, codo*: ");
+        Console.Write("\n\nKiuvo panita, porfa, ingrese su nombre *guiño, guiño, codo, codo*: ");
         string nombre = Console.ReadLine()!;
-        Console.WriteLine($"Hola {nombre}! Bienvenido al la prueba del saber");
+        Console.WriteLine($"\n\n           Hola {nombre}! Bienvenido al la Prueba del Saber");
+        Thread.Sleep(3000);
         return nombre!;
     }
 
     // Función principal para ejecutar el juego de memoria.
     static void JugarJuegoDeMemoria(string nombreUsuario)
     {
-        //ReproducirMusica(@"/Users/e.r/Desktop/bienvenida.wav");
+        Console.Clear();
         Console.WriteLine($"Empecemos, {nombreUsuario}!");
+        Thread.Sleep(2000);
+        Console.Clear();
 
         // Cartas disponibles
         string[] cartas = { "🂡", "🂡", "🂪", "🂤", "🂥", "🂤", "🂥", "🂨", "🂨", "🂪" };
@@ -176,7 +182,7 @@ class JuegoDeMemoria
         int intentos = 0;
         int paresEncontrados = 0;
 
-        const int maxIntentos = 15;
+        const int maxIntentos = 1;
 
         while (paresEncontrados < 5 && intentos < maxIntentos)
         {
@@ -187,7 +193,7 @@ class JuegoDeMemoria
             int posicion1 = SolicitarPosicionCarta("primera");
             while (tablero[posicion1 - 1] != "🂫")
             {
-                Console.WriteLine("¡Ya has seleccionado esta carta!");
+                Console.WriteLine("\n¡Ya has seleccionado esta carta!\n");
                 posicion1 = SolicitarPosicionCarta("primera");
             }
 
@@ -200,7 +206,7 @@ class JuegoDeMemoria
             int posicion2 = SolicitarPosicionCarta("segunda");
             while (tablero[posicion2 - 1] != "🂫" || posicion1 == posicion2)
             {
-                Console.WriteLine("¡Ya has seleccionado esta carta o es la misma que la primera!");
+                Console.WriteLine("\n¡Ya has seleccionado esta carta o es la misma que la primera!\n");
                 posicion2 = SolicitarPosicionCarta("segunda");
             }
 
@@ -215,13 +221,13 @@ class JuegoDeMemoria
             // Verificar si las cartas son iguales
             if (carta1 == carta2)
             {
-                Console.WriteLine("¡Encontraste un par!");
+                Console.WriteLine("\n¡Encontraste un par!\n");
                 paresEncontrados++;
                 Thread.Sleep(1500);
             }
             else
             {
-                Console.WriteLine("¡Las cartas no coinciden!");
+                Console.WriteLine("\n¡Las cartas no coinciden!\n");
                 Thread.Sleep(2000);
 
                 // Voltear cartas de nuevo
@@ -232,7 +238,7 @@ class JuegoDeMemoria
             // Mostrar mensaje si queda un par por encontrar
             if (5 - paresEncontrados == 1)
             {
-                Console.WriteLine("¡Queda 1 par por encontrar!");
+                Console.WriteLine("\n¡Queda 1 par por encontrar!\n");
                 Thread.Sleep(2000);
             }
         }
@@ -241,7 +247,7 @@ class JuegoDeMemoria
         if (paresEncontrados < 5)
         {
             ReproducirArchivoAudio("/Users/e.r/Desktop/perder.wav");
-            Console.WriteLine($"Lo siento, {nombreUsuario}. Has superado el límite de intentos.");
+            Console.WriteLine($"\n\nLo siento, {nombreUsuario}. Has superado el límite de intentos.\n");
             Thread.Sleep(2000);
         }
 
@@ -282,11 +288,11 @@ class JuegoDeMemoria
     // Función para solicitar la posición de una carta
     static int SolicitarPosicionCarta(string ordinal)
     {
-        Console.Write($"Selecciona la {ordinal} carta (1-10): ");
+        Console.Write($"\nSelecciona la {ordinal} carta (1-10): ");
         int posicion;
         while (!int.TryParse(Console.ReadLine(), out posicion) || posicion < 1 || posicion > 10)
         {
-            Console.WriteLine("¡Posición inválida! Inténtalo de nuevo (1-10): ");
+            Console.Write("\n\n¡Posición inválida! Inténtalo de nuevo (1-10): ");
         }
         return posicion;
     }
@@ -296,19 +302,19 @@ class JuegoDeMemoria
     {
         ReproducirArchivoAudio("/Users/e.r/Desktop/ganar.wav");
         Console.WriteLine($"¡Felicidades, {nombreUsuario}!");
-        Console.WriteLine($"Has encontrado todos los pares en {intentos} intentos.");
+        Console.WriteLine($"\n\nHas encontrado todos los pares en {intentos} intentos.\n");
 
-        if (intentos <= 20)
+        if (intentos <= 10)
         {
-            Console.WriteLine("¡Manito, ute' e el mejor en eta' vaina de la memoria!");
+            Console.WriteLine("\n\n¡Manito, ute' e el mejor en eta' vaina de la memoria!");
         }
-        else if (intentos <= 30)
+        else if (intentos <= 15)
         {
-            Console.WriteLine("¡Buen trabajo en tu memoria!");
+            Console.WriteLine("\n\n¡Buen trabajo en tu memoria!");
         }
         else
         {
-            Console.WriteLine("¡compai, ute e' un bruto, siga practicando para mejorar su memoria!");
+            Console.WriteLine("\n\n¡Compai, ute e' un bruto, siga practicando para mejorar su memoria!");
         }
 
         Console.WriteLine();
@@ -317,7 +323,7 @@ class JuegoDeMemoria
     // Mostrar mensaje de despedida al usuario
     static void MostrarDespedida()
     {
-        Console.WriteLine("Manito, gracias por jugar el mejor juego que haz jugado en toda tu vida, ¡Cuidate!");
+        Console.WriteLine("\n\nManito, gracias por jugar el mejor juego que haz jugado en toda tu vida, ¡Cuidate!");
     }
     static void ReproducirArchivoAudio(string ruta)
     {
@@ -327,7 +333,7 @@ class JuegoDeMemoria
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error al reproducir el archivo de audio: {ex.Message}");
+            Console.WriteLine($"\n\nError al reproducir el archivo de audio: {ex.Message}");
         }
     }
 }
