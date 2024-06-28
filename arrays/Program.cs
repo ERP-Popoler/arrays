@@ -128,7 +128,7 @@ class JuegoDeMemoria
 
         Console.ForegroundColor = ConsoleColor.DarkGreen;
         Console.WriteLine("Presiona Enter para comenzar.");
-        Console.ReadLine();
+        Console.ReadKey();
 
         Console.Clear();
         Console.ResetColor();
@@ -139,9 +139,9 @@ class JuegoDeMemoria
     {
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("Kiuvo panita, porfa, ingrese su nombre *guiño, guiño, codo, codo*: ");
-        string nombre = Console.ReadLine();
+        string nombre = Console.ReadLine()!;
         Console.WriteLine($"Hola {nombre}! Bienvenido al la prueba del saber");
-        return nombre;
+        return nombre!;
     }
 
     // Función principal para ejecutar el juego de memoria.
