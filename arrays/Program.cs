@@ -17,7 +17,7 @@ class JuegoDeMemoria
             JugarJuegoDeMemoria(nombreUsuario);
 
             Console.Write("¿Quieres jugar de nuevo? (SI/NO): ");
-            string respuesta = Console.ReadLine()?.ToUpper();
+            string respuesta = Console.ReadLine()?.ToUpper()!;
             if (respuesta == "SI")
             {
                 jugarDeNuevo = true;
