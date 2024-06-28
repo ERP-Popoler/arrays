@@ -5,7 +5,6 @@ class JuegoDeMemoria
 {
     static void Main(string[] args)
     {
-        
         ConfigurarConsola();
         MostrarBienvenida();
 
@@ -17,9 +16,9 @@ class JuegoDeMemoria
             jugarDeNuevo = false;
             JugarJuegoDeMemoria(nombreUsuario);
 
-            Console.WriteLine("¿Quieres jugar de nuevo? (S/N): ");
-            string respuesta = Console.ReadLine()!.ToUpper();
-            if (respuesta == "S")
+            Console.Write("¿Quieres jugar de nuevo? (SI/NO): ");
+            string respuesta = Console.ReadLine()?.ToUpper();
+            if (respuesta == "SI")
             {
                 jugarDeNuevo = true;
             }
@@ -28,43 +27,45 @@ class JuegoDeMemoria
         MostrarDespedida();
     }
 
-    // Priscila - Configuración de la consola y bienvenida
-    // Esta función configura la consola para que soporte UTF-8 y establece el título del juego.
+    // Configuración de la consola para soportar UTF-8 y establecer el título del juego.
     static void ConfigurarConsola()
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         Console.Title = "Juego de Memoria";
     }
 
-    // Esta función muestra la pantalla de bienvenida al jugador.
+    // Mostrar pantalla de bienvenida con arte ASCII y mensaje.
     static void MostrarBienvenida()
     {
-        string teambigote = @"       
+        // Arte ASCII
+        string teamBigote = @"
         __| |_________________________________________________________________________________________________________________________________________| |__
         __   _________________________________________________________________________________________________________________________________________   __
-          | |                                                                                                                                         | |  
-          | |                                                                                                                                         | |  
-          | |                                                                                                                                         | |  
-          | |   ,--.--------.     ,----.    ,---.             ___                       .=-.-.     _,---.      _,.---._    ,--.--------.     ,----.   | |  
-          | |  /==/,  -   , -\ ,-.--` , \ .--.'  \     .-._ .'=.'\           _..---.   /==/_ / _.='.'-,  \   ,-.' , -  `. /==/,  -   , -\ ,-.--` , \  | |  
-          | |  \==\.-.  - ,-./|==|-  _.-` \==\-/\ \   /==/ \|==|  |        .' .'.-. \ |==|, | /==.'-     /  /==/_,  ,  - \\==\.-.  - ,-./|==|-  _.-`  | |  
-          | |   `--`\==\- \   |==|   `.-. /==/-|_\ |  |==|,|  / - |       /==/- '=' / |==|  |/==/ -   .-'  |==|   .=.     |`--`\==\- \   |==|   `.-.  | |  
-          | |        \==\_ \ /==/_ ,    / \==\,   - \ |==|  \/  , |       |==|-,   '  |==|- ||==|_   /_,-. |==|_ : ;=:  - |     \==\_ \ /==/_ ,    /  | |  
-          | |        |==|- | |==|    .-'  /==/ -   ,| |==|- ,   _ |       |==|  .=. \ |==| ,||==|  , \_.' )|==| , '='     |     |==|- | |==|    .-'   | |  
-          | |        |==|, | |==|_  ,`-._/==/-  /\ - \|==| _ /\   |       /==/- '=' ,||==|- |\==\-  ,    (  \==\ -    ,_ /      |==|, | |==|_  ,`-._  | |  
-          | |        /==/ -/ /==/ ,     /\==\ _.\=\.-'/==/  / / , /      |==|   -   / /==/. / /==/ _  ,  /   '.='. -   .'       /==/ -/ /==/ ,     /  | |  
-          | |        `--`--` `--`-----``  `--`        `--`./  `--`       `-._`.___,'  `--`-`  `--`------'      `--`--''         `--`--` `--`-----``   | |  
-          | |                                                                                                                                         | |  
-          | |                                                                                                                                         | |  
+          | |                                                                                                                                         | |
+          | |                                                                                                                                         | |
+          | |                                                                                                                                         | |
+          | |   ,--.--------.     ,----.    ,---.             ___                       .=-.-.     _,---.      _,.---._    ,--.--------.     ,----.   | |
+          | |  /==/,  -   , -\ ,-.--` , \ .--.'  \     .-._ .'=.'\           _..---.   /==/_ / _.='.'-,  \   ,-.' , -  `. /==/,  -   , -\ ,-.--` , \  | |
+          | |  \==\.-.  - ,-./|==|-  _.-` \==\-/\ \   /==/ \|==|  |        .' .'.-. \ |==|, | /==.'-     /  /==/_,  ,  - \\==\.-.  - ,-./|==|-  _.-`  | |
+          | |   `--`\==\- \   |==|   `.-. /==/-|_\ |  |==|,|  / - |       /==/- '=' / |==|  |/==/ -   .-'  |==|   .=.     |`--`\==\- \   |==|   `.-.  | |
+          | |        \==\_ \ /==/_ ,    / \==\,   - \ |==|  \/  , |       |==|-,   '  |==|- ||==|_   /_,-. |==|_ : ;=:  - |     \==\_ \ /==/_ ,    /  | |
+          | |        |==|- | |==|    .-'  /==/ -   ,| |==|- ,   _ |       |==|  .=. \ |==| ,||==|  , \_.' )|==| , '='     |     |==|- | |==|    .-'   | |
+          | |        |==|, | |==|_  ,`-._/==/-  /\ - \|==| _ /\   |       /==/- '=' ,||==|- |\==\-  ,    (  \==\ -    ,_ /      |==|, | |==|_  ,`-._  | |
+          | |        /==/ -/ /==/ ,     /\==\ _.\=\.-'/==/  / / , /      |==|   -   / /==/. / /==/ _  ,  /   '.='. -   .'       /==/ -/ /==/ ,     /  | |
+          | |        `--`--` `--`-----``  `--`        `--`./  `--`       `-._`.___,'  `--`-`  `--`------'      `--`--''         `--`--` `--`-----``   | |
+          | |                                                                                                                                         | |
+          | |                                                                                                                                         | |
         __| |_________________________________________________________________________________________________________________________________________| |_
         __   _________________________________________________________________________________________________________________________________________   __
-          | |                                                                                                                                         | |  "; 
-        foreach (char c in teambigote)
+          | |                                                                                                                                         | |  ";
+          
+        // Mostrar arte ASCII letra por letra
+        foreach (char c in teamBigote)
         {
             Console.Write(c);
-            Thread.Sleep(1); // Pausa para efecto visual
+            Thread.Sleep(0); // Pausa para efecto visual
         }
-
+          
         string bienvenida = @"       
          /*  _____                                                                                                                                _____  */
          /* ( ___ )                                                                                                                              ( ___ ) */
@@ -92,7 +93,22 @@ class JuegoDeMemoria
          /*  |   |       \/_/   \/_/   \/___/  \/____/  \/___/  \/__/\/_/  \/__,_ / \/____/\/____/     \/_____/ \/__/\/_/ \/___/  \/____/ \/_/    |   |  */
          /*  |   |                                                                                                                                |   |  */
          /*  |   |                                                                                                                                |   |  */
-         /*  |___|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|___|  */
+         /*  |   |                                                                                                                                |   |  */
+         /*  |___|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|___|  */                                                                                                                           
+         /*  |   |                                                                                                                                |   |  */ 
+         /*  |   |                                                                                                                                |   |  */ 
+         /*  |   |                                                                                                                                |   |  */ 
+         /*  |   |                                                                                                                                |   |  */
+         /*  |   |                                                                                                                                |   |  */
+         /*  |   |                                                                                                                                |   |  */
+         /*  |   |                                                                                                                                |   |  */ 
+         /*  |   |                                                                                                                                |   |  */
+         /*  |   |                                                                                                                                |   |  */
+         /*  |   |                                                                                                                                |   |  */
+         /*  |   |                                                                                                                                |   |  */
+         /*  |   |                                                                                                                                |   |  */
+         /*  |   |                                                                                                                                |   |  */
+         /*  |   |                                                                                                                                |   |  */
          /* (_____)                                                                                                                              (_____) */";
 
         // Animación para mostrar el arte ASCII letra por letra
@@ -103,161 +119,201 @@ class JuegoDeMemoria
         }
         Console.ReadKey(true);
 
-        Console.WriteLine("\nEl objetivo del juego es encontrar todas las parejas de cartas.");
-        Console.WriteLine("Tienes un número limitado de intentos para descubrir las cartas.");
-        Console.WriteLine("Presiona la tecla ESPACIO para empezar...");
-        while (Console.ReadKey(true).Key != ConsoleKey.Spacebar) { }
-        Console.WriteLine("\n¡Buena suerte!\n");
+        // Mensaje de bienvenida
+        Console.BackgroundColor = ConsoleColor.Blue;
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
+        Console.WriteLine("\n               ***¡Bienvenido al la prueba del saber, porque te lo tienes que saber***");
+        Console.WriteLine("\n\nPorfi Orison, no rompa el programa poniendo decimales :( nos esforzamos mucho, porfa, no lo dañe \n");
+        Console.ResetColor();
+
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine("Presiona Enter para comenzar.");
+        Console.ReadLine();
+
+        Console.Clear();
+        Console.ResetColor();
     }
 
-    // Pablo - Interacción con el usuario
-    // Esta función solicita el nombre del usuario y lo retorna.
+    // Función para solicitar y devolver el nombre del usuario.
     static string SolicitarNombreUsuario()
     {
-        Console.Write("Por favor, introduce tu nombre: ");
-        return Console.ReadLine()!;
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("Kiuvo panita, porfa, ingrese su nombre *guiño, guiño, codo, codo*: ");
+        string nombre = Console.ReadLine();
+        Console.WriteLine($"Hola {nombre}! Bienvenido al la prueba del saber");
+        return nombre;
     }
 
-    // Elians - Implementación del juego de memoria
-    // Esta función contiene la lógica principal del juego de memoria.
+    // Función principal para ejecutar el juego de memoria.
     static void JugarJuegoDeMemoria(string nombreUsuario)
     {
-        int filas = 4, columnas = 4, intentos = 12; // Cambiado el número de intentos a 12
-        char[,] tablero = InicializarTablero(filas, columnas);
-        int cartasRestantes = filas * columnas, movimientos = 0;
+        //ReproducirMusica(@"/Users/e.r/Desktop/bienvenida.wav");
+        Console.WriteLine($"Empecemos, {nombreUsuario}!");
 
-        while (cartasRestantes > 0 && intentos > 0)
+        // Cartas disponibles
+        string[] cartas = { "🂡", "🂢", "🂣", "🂤", "🂥", "🂦", "🂧", "🂨", "🂩", "🂪" };
+
+        // Barajar las cartas
+        Random rnd = new Random();
+        int[] posiciones = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        for (int i = 0; i < posiciones.Length; i++)
         {
-            MostrarTablero(tablero, filas, columnas);
-            if (intentos == 1)
+            int rndIndex = rnd.Next(i, posiciones.Length);
+            int temp = posiciones[i];
+            posiciones[i] = posiciones[rndIndex];
+            posiciones[rndIndex] = temp;
+        }
+
+        // Tablero de juego
+        string[] tablero = new string[10];
+        for (int i = 0; i < 10; i++)
+        {
+            tablero[i] = "🂫"; // Carta de reverso
+        }
+
+        // Intentos y pares encontrados
+        int intentos = 0;
+        int paresEncontrados = 0;
+
+        const int maxIntentos = 15;
+
+        while (paresEncontrados < 5 && intentos < maxIntentos)
+        {
+            // Mostrar tablero actual
+            MostrarTablero(tablero);
+
+            // Solicitar posición de la primera carta
+            int posicion1 = SolicitarPosicionCarta("primera");
+            while (tablero[posicion1 - 1] != "🂫")
             {
-                Console.WriteLine("¡Atención! Te queda solo un intento.");
+                Console.WriteLine("¡Ya has seleccionado esta carta!");
+                posicion1 = SolicitarPosicionCarta("primera");
             }
 
-            int[] pos1 = SeleccionarCarta(filas, columnas, tablero);
-            MostrarCarta(tablero, pos1[0], pos1[1]);
+            // Mostrar carta seleccionada
+            string carta1 = cartas[posiciones[posicion1 - 1]];
+            tablero[posicion1 - 1] = carta1;
+            MostrarTablero(tablero);
 
-            int[] pos2 = SeleccionarCarta(filas, columnas, tablero);
-            MostrarCarta(tablero, pos2[0], pos2[1]);
-
-            if (tablero[pos1[0], pos1[1]] == tablero[pos2[0], pos2[1]])
+            // Solicitar posición de la segunda carta
+            int posicion2 = SolicitarPosicionCarta("segunda");
+            while (tablero[posicion2 - 1] != "🂫" || posicion1 == posicion2)
             {
-                Console.WriteLine("¡Encontraste una pareja!");
-                tablero[pos1[0], pos1[1]] = tablero[pos2[0], pos2[1]] = ' ';
-                cartasRestantes -= 2;
+                Console.WriteLine("¡Ya has seleccionado esta carta o es la misma que la primera!");
+                posicion2 = SolicitarPosicionCarta("segunda");
+            }
+
+            // Mostrar carta seleccionada
+            string carta2 = cartas[posiciones[posicion2 - 1]];
+            tablero[posicion2 - 1] = carta2;
+            MostrarTablero(tablero);
+
+            // Incrementar intentos
+            intentos++;
+
+            // Verificar si las cartas son iguales
+            if (carta1 == carta2)
+            {
+                Console.WriteLine("¡Encontraste un par!");
+                paresEncontrados++;
+                Thread.Sleep(1500);
             }
             else
             {
-                Console.WriteLine("Las cartas no coinciden. Inténtalo de nuevo.");
+                Console.WriteLine("¡Las cartas no coinciden!");
+                Thread.Sleep(2000);
+
+                // Voltear cartas de nuevo
+                tablero[posicion1 - 1] = "🂫";
+                tablero[posicion2 - 1] = "🂫";
+            }
+
+            // Mostrar mensaje si queda un par por encontrar
+            if (5 - paresEncontrados == 1)
+            {
+                Console.WriteLine("¡Queda 1 par por encontrar!");
                 Thread.Sleep(2000);
             }
+        }
 
-            movimientos++;
-            intentos--;
+        // Mostrar mensaje de pérdida si se supera el límite de intentos
+        if (paresEncontrados < 5)
+        {
+            Console.WriteLine($"Lo siento, {nombreUsuario}. Has superado el límite de intentos.");
+            Thread.Sleep(2000);
+        }
 
-            if (intentos == 0 && cartasRestantes > 0)
+        // Mostrar estadísticas del juego si ha encontrado todos los pares
+        if (paresEncontrados == 5)
+        {
+            MostrarEstadisticas(nombreUsuario, intentos);
+        }
+    }
+
+    /*static void ReproducirMusica(string rutaArchivo)
+    {
+        string rutaCompleta = $"{AppDomain.CurrentDomain.BaseDirectory}\\{rutaArchivo}";
+
+        if (System.IO.File.Exists(rutaCompleta))
+        {
+            using (var player = new System.Media.SoundPlayer(rutaCompleta))
             {
-                Console.WriteLine("¡Oh no! Te has quedado sin intentos.");
+                player.PlayLooping(); // Reproducir en bucle
             }
         }
-
-        MostrarTablero(tablero, filas, columnas);
-        if (cartasRestantes == 0)
-        {
-            Console.WriteLine($"¡Felicidades {nombreUsuario}! Has encontrado todas las parejas en {movimientos} movimientos.");
-        }
-        else
-        {
-            Console.WriteLine($"¡Mejor suerte la próxima vez, {nombreUsuario}!");
-        }
-    }
-
-    // Esta función inicializa el tablero del juego con parejas de letras.
-    static char[,] InicializarTablero(int filas, int columnas)
-    {
-        char[,] tablero = new char[filas, columnas];
-        char letra = 'A';
-        Random random = new Random();
-
-        for (int i = 0; i < filas * columnas / 2; i++)
-        {
-            int x1, y1, x2, y2;
-            do { x1 = random.Next(filas); y1 = random.Next(columnas); } while (tablero[x1, y1] != '\0');
-            do { x2 = random.Next(filas); y2 = random.Next(columnas); } while (tablero[x2, y2] != '\0' || (x1 == x2 && y1 == y2));
-
-            tablero[x1, y1] = tablero[x2, y2] = letra++;
-        }
-
-        for (int i = 0; i < filas; i++)
-            for (int j = 0; j < columnas; j++)
-                if (tablero[i, j] == '\0')
-                    tablero[i, j] = 'X';
-
-        return tablero;
-    }
-
-    // Esta función muestra el tablero en su estado actual.
-    static void MostrarTablero(char[,] tablero, int filas, int columnas)
+    }*/
+    
+    // Función para mostrar el tablero actualizado
+    static void MostrarTablero(string[] tablero)
     {
         Console.Clear();
-        Console.SetCursorPosition(0, 0);
         Console.WriteLine("Tablero:");
-        Console.Write("  ");
-        for (int j = 0; j < columnas; j++) Console.Write($"{j + 1} ");
-        Console.WriteLine();
-        for (int i = 0; i < filas; i++)
+        for (int i = 0; i < tablero.Length; i++)
         {
-            Console.Write($"{i + 1} ");
-            for (int j = 0; j < columnas; j++)
-            {
-                if (tablero[i, j] == ' ') Console.Write("  ");
-                else Console.Write("X ");
-            }
-            Console.WriteLine();
+            Console.Write($"{tablero[i]} ");
+            if ((i + 1) % 5 == 0)
+                Console.WriteLine();
         }
+        Console.WriteLine();
     }
 
-    // Esta función permite al jugador seleccionar una carta en el tablero.
-    static int[] SeleccionarCarta(int filas, int columnas, char[,] tablero)
+    // Función para solicitar la posición de una carta
+    static int SolicitarPosicionCarta(string ordinal)
     {
-        int[] posicion = new int[2];
-        while (true)
+        Console.Write($"Selecciona la {ordinal} carta (1-10): ");
+        int posicion;
+        while (!int.TryParse(Console.ReadLine(), out posicion) || posicion < 1 || posicion > 10)
         {
-            Console.Write("Selecciona una carta (fila columna): ");
-            string[] coordenadas = Console.ReadLine()!.Split();
-            if (coordenadas.Length == 2 && int.TryParse(coordenadas[0], out int fila) && int.TryParse(coordenadas[1], out int columna))
-            {
-                if (fila >= 1 && fila <= filas && columna >= 1 && columna <= columnas && tablero[fila - 1, columna - 1] != ' ' && tablero[fila - 1, columna - 1] != 'X')
-                {
-                    posicion[0] = fila - 1;
-                    posicion[1] = columna - 1;
-                    Console.WriteLine("¡Buena elección!");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Error: La carta ya ha sido encontrada o está oculta. Inténtalo de nuevo.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Error: Entrada inválida. Por favor, ingresa el número de fila y columna separados por un espacio.");
-            }
+            Console.WriteLine("¡Posición inválida! Inténtalo de nuevo (1-10): ");
         }
         return posicion;
     }
 
-    // Esta función muestra el contenido de la carta seleccionada.
-    static void MostrarCarta(char[,] tablero, int x, int y)
+    // Función para mostrar estadísticas finales del juego
+    static void MostrarEstadisticas(string nombreUsuario, int intentos)
     {
-        Console.WriteLine($"Carta seleccionada: {x + 1}, {y + 1} - Contenido: {tablero[x, y]}");
+        Console.WriteLine($"¡Felicidades, {nombreUsuario}!");
+        Console.WriteLine($"Has encontrado todos los pares en {intentos} intentos.");
+
+        if (intentos <= 20)
+        {
+            Console.WriteLine("¡Manito, ute' e el mejor en eta' vaina de la memoria!");
+        }
+        else if (intentos <= 30)
+        {
+            Console.WriteLine("¡Buen trabajo en tu memoria!");
+        }
+        else
+        {
+            Console.WriteLine("¡compai, ute e' un bruto, siga practicando para mejorar su memoria!");
+        }
+
+        Console.WriteLine();
     }
 
-    // Otoniel - Mensajes finales y despedida
-    // Esta función muestra un mensaje de despedida al jugador.
+    // Mostrar mensaje de despedida al usuario
     static void MostrarDespedida()
     {
-        Console.WriteLine("¡Gracias por jugar! Presiona cualquier tecla para salir...");
-        Console.ReadKey(true);
+        Console.WriteLine("Manito, gracias por jugar el mejor juego que haz jugado en toda tu vida, ¡Cuidate!");
     }
 }
