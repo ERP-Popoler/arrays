@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Diagnostics;
 
 class JuegoDeMemoria
 {
@@ -37,7 +38,7 @@ class JuegoDeMemoria
     // Mostrar pantalla de bienvenida con arte ASCII y mensaje.
     static void MostrarBienvenida()
     {
-        // Arte ASCII
+        ReproducirArchivoAudio("/Users/e.r/Desktop/bienvenida.wav");
         string teamBigote = @"
         __| |_________________________________________________________________________________________________________________________________________| |__
         __   _________________________________________________________________________________________________________________________________________   __
@@ -151,7 +152,7 @@ class JuegoDeMemoria
         Console.WriteLine($"Empecemos, {nombreUsuario}!");
 
         // Cartas disponibles
-        string[] cartas = { "🂡", "🂢", "🂣", "🂤", "🂥", "🂦", "🂧", "🂨", "🂩", "🂪" };
+        string[] cartas = { "🂡", "🂡", "🂪", "🂤", "🂥", "🂤", "🂥", "🂨", "🂨", "🂪" };
 
         // Barajar las cartas
         Random rnd = new Random();
@@ -239,6 +240,7 @@ class JuegoDeMemoria
         // Mostrar mensaje de pérdida si se supera el límite de intentos
         if (paresEncontrados < 5)
         {
+            ReproducirArchivoAudio("/Users/e.r/Desktop/perder.wav");
             Console.WriteLine($"Lo siento, {nombreUsuario}. Has superado el límite de intentos.");
             Thread.Sleep(2000);
         }
@@ -292,6 +294,7 @@ class JuegoDeMemoria
     // Función para mostrar estadísticas finales del juego
     static void MostrarEstadisticas(string nombreUsuario, int intentos)
     {
+        ReproducirArchivoAudio("/Users/e.r/Desktop/ganar.wav");
         Console.WriteLine($"¡Felicidades, {nombreUsuario}!");
         Console.WriteLine($"Has encontrado todos los pares en {intentos} intentos.");
 
@@ -315,5 +318,16 @@ class JuegoDeMemoria
     static void MostrarDespedida()
     {
         Console.WriteLine("Manito, gracias por jugar el mejor juego que haz jugado en toda tu vida, ¡Cuidate!");
+    }
+    static void ReproducirArchivoAudio(string ruta)
+    {
+        try
+        {
+            Process.Start("afplay", ruta);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al reproducir el archivo de audio: {ex.Message}");
+        }
     }
 }
