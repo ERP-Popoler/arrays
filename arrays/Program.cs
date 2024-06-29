@@ -142,6 +142,9 @@ class JuegoDeMemoria
     static string SolicitarNombreUsuario()
     {
         Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("                                                        ¡Bienvenido al desafiante y entretenido Juego de Memoria de Cartas! \n         Prepárate para poner a prueba tus habilidades de memoria en una emocionante aventura llena de diversión y sorpresas.");
+        Console.ReadKey();
+        Console.Clear();
         Console.Write("\n\nKiuvo panita, porfa, ingrese su nombre *guiño, guiño, codo, codo*: ");
         string nombre = Console.ReadLine()!;
         Console.WriteLine($"\n\n           Hola {nombre}! Bienvenido al la Prueba del Saber");
