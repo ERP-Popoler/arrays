@@ -182,7 +182,7 @@ class JuegoDeMemoria
         int intentos = 0;
         int paresEncontrados = 0;
 
-        const int maxIntentos = 1;
+        const int maxIntentos = 15;
 
         while (paresEncontrados < 5 && intentos < maxIntentos)
         {
